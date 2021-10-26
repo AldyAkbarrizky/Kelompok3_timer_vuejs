@@ -91,7 +91,7 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
 
 ### Prerequisites ✨
 
-* PostgreSQL versi 14.0
+* PostgreSQL versi 14.0 (disarankan menginstall juga pgAdmin)
 * Node.js versi 14.7.5
 
 ### Installation ✨
