@@ -91,8 +91,8 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
 
 ### Prerequisites ✨
 
-* PostgreSQL
-* npm
+* PostgreSQL versi 14.0
+* Node.js versi 14.7.5
 
 ### Installation ✨
 
@@ -103,16 +103,25 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
 2. Konfigurasi database PostgreSQL
  * Buat database baru pada PostgreSQL dengan nama ```timer```
 3. Konfigurasi ```db.config.js```, Sesuaikan parameter USER dan PASSWORD sesuai dengan username dan password PostgreSQL.
-4. Install NPM packages
+4. Install NPM packages pada folder front end dan back end
+   ```sh
+   cd timer-back-end
+   ```
+   ```sh
+   npm install
+   ```
+   ```sh
+   cd timer-front-end
+   ```
    ```sh
    npm install
    ```
 5. Jalankan server pada Backend
- * ```cd back-end``` 
+ * ```cd timer-back-end``` 
     lalu jalankan server menggunakan
   ```node server.js```
 6. Jalankan Frontend
- * ```cd front-end``` 
+ * ```cd timer-front-end``` 
     lalu jalankan
   ```npm run serve```
 
