@@ -91,7 +91,7 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
 
 ### Prerequisites ✨
 
-* PostgreSQL versi 14.0
+* PostgreSQL versi 14.0 (disarankan menginstall juga pgAdmin)
 * Node.js versi 14.7.5
 
 ### Installation ✨
@@ -111,7 +111,7 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
    npm install
    ```
    ```sh
-   cd timer-front-end
+   cd ../timer-front-end
    ```
    ```sh
    npm install
@@ -120,7 +120,8 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
  * ```cd timer-back-end``` 
     lalu jalankan server menggunakan
   ```node server.js```
-6. Jalankan Frontend
+    jika sudah ridak ada error maka backend berhasil dijalankan
+6. Jalankan Frontend pada terminal baru
  * ```cd timer-front-end``` 
     lalu jalankan
   ```npm run serve```
@@ -132,13 +133,13 @@ _Project ini dibuat dengan beberapa tech stack sebagai berikut_
 <!-- USAGE EXAMPLES -->
 ## Usage
 After going through the Installation step, you will be directed to open the
-```localhost:8080```
+```localhost:8081```
 
 then, click ```start``` to start this stopwatch. While running the stopwatch, record the lap times to find out how much time is important to you by pressing the ```lap``` button, there will be how many laps and the time and estimate of one lap. ```pause``` to pause the stopwatch temporarily and ```stop``` to stop the stopwatch and reset one of the stopwatches.
 To add more than one timer, press the ```Add Timer``` button and to clear and reset all timers at once, simply press the ```Clear Timer``` button.
 
 _Setelah melalui step Installation, maka anda akan diarahkan untuk membuka 
-```localhost:8080```_
+```localhost:8081```_
 
 _lalu,  klik ```start``` untuk memulai stopwatch ini. Selama menjalankan stopwatch, catat waktu putaran untuk mengetahui berapa waktu yang penting bagi anda dengan menekan tombol ```lap```, akan terdapat putaran keberapa serta waktu dan estimasi satu putaran. ```pause``` untuk menghentikan stopwatch sementara dan ```stop``` untuk menghentikan stopwatch serta mereset salah satu stopwatch.
 Untuk menambah timer lebih dari satu timer, yaitu dengan menekan tombol ```Add Timer``` dan untuk menghapus serta mereset semua timer sekaligus, cukup menekan tombol ```Clear Timer```._
