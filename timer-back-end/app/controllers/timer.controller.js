@@ -85,10 +85,11 @@ exports.findOne = (req, res) => {
 
 // Update a Timer by the id in the request
 exports.update = (req, res) => {
-    const id = req.params.id;
+    console.log(req.params);
+    const timer_id = "Timer-" + req.params.id;
 
     Timer.update(req.body, {
-      where: { id: id }
+      where: { timer_id: timer_id }
     })
       .then(num => {
         if (num == 1) {
@@ -97,13 +98,13 @@ exports.update = (req, res) => {
           });
         } else {
           res.send({
-            message: `Cannot update Timer with id=${id}. Maybe Timer was not found or req.body is empty!`
+            message: `Cannot update Timer with timer_id=${timer_id}. Maybe Timer was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Timers with id=" + id
+          message: "Error updating Timers with timer_id=" + timer_id
         });
     });
 };

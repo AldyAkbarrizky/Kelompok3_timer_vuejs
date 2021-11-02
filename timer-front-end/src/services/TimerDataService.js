@@ -10,6 +10,9 @@ class TimerDataService {
     deleteAll() {
         return http.delete(`/timers`);
     }
+    update(timerID, data) {
+        return http.put(`/timers/${timerID}`, data);
+    }
 }
 
 export default new TimerDataService();

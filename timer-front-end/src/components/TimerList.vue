@@ -44,39 +44,39 @@
             console.log("Start: " + localStorage.timer_count);
 
             if(parseInt(localStorage.timer_count) === 1) {
-                this.timerComp1 = createApp(TimerVue);
+                this.timerComp1 = createApp(TimerVue, {id: "0"});
                 const wrapper = document.createElement("div");
                 wrapper.setAttribute("id", "0");
                 wrapper.setAttribute("class", "timer-container w-33-cent text-center");
                 this.timerComp1.mount(wrapper);
                 document.getElementById('timer-cont').append(wrapper);
             } else if(parseInt(localStorage.timer_count) === 2) {
-                this.timerComp1 = createApp(TimerVue);
+                this.timerComp1 = createApp(TimerVue, {id: "0"});
                 const wrapper1 = document.createElement("div");
                 wrapper1.setAttribute("id", "0");
                 wrapper1.setAttribute("class", "timer-container w-33-cent text-center");
                 this.timerComp1.mount(wrapper1);
                 document.getElementById('timer-cont').append(wrapper1);
-                this.timerComp2 = createApp(TimerVue);
+                this.timerComp2 = createApp(TimerVue, {id: "1"});
                 const wrapper2 = document.createElement("div");
                 wrapper2.setAttribute("id", "1");
                 wrapper2.setAttribute("class", "timer-container w-33-cent text-center");
                 this.timerComp2.mount(wrapper2);
                 document.getElementById('timer-cont').append(wrapper2);
             } else if(parseInt(localStorage.timer_count) === 3) {
-                this.timerComp1 = createApp(TimerVue);
+                this.timerComp1 = createApp(TimerVue, {id: "0"});
                 const wrapper1 = document.createElement("div");
                 wrapper1.setAttribute("id", "0");
                 wrapper1.setAttribute("class", "timer-container w-33-cent text-center");
                 this.timerComp1.mount(wrapper1);
                 document.getElementById('timer-cont').append(wrapper1);
-                this.timerComp2 = createApp(TimerVue);
+                this.timerComp2 = createApp(TimerVue, {id: "1"});
                 const wrapper2 = document.createElement("div");
                 wrapper2.setAttribute("id", "1");
                 wrapper2.setAttribute("class", "timer-container w-33-cent text-center");
                 this.timerComp2.mount(wrapper2);
                 document.getElementById('timer-cont').append(wrapper2);
-                this.timerComp3 = createApp(TimerVue);
+                this.timerComp3 = createApp(TimerVue, {id: "2"});
                 const wrapper3 = document.createElement("div");
                 wrapper3.setAttribute("id", "2");
                 wrapper3.setAttribute("class", "timer-container w-33-cent text-center");
@@ -97,21 +97,21 @@
                     .then(response => {
                         // Add new Timer
                         if(parseInt(localStorage.timer_count) === 0) {
-                            this.timerComp1 = createApp(TimerVue);
+                            this.timerComp1 = createApp(TimerVue, {id: "0"});
                             const wrapper = document.createElement("div");
                             wrapper.setAttribute("id", localStorage.timer_count);
                             wrapper.setAttribute("class", "timer-container w-33-cent text-center");
                             this.timerComp1.mount(wrapper);
                             document.getElementById('timer-cont').append(wrapper);
                         } else if(parseInt(localStorage.timer_count) === 1) {
-                            this.timerComp2 = createApp(TimerVue);
+                            this.timerComp2 = createApp(TimerVue, {id: "1"});
                             const wrapper = document.createElement("div");
                             wrapper.setAttribute("id", localStorage.timer_count);
                             wrapper.setAttribute("class", "timer-container w-33-cent text-center");
                             this.timerComp2.mount(wrapper);
                             document.getElementById('timer-cont').append(wrapper);
                         } else if(parseInt(localStorage.timer_count) === 2) {
-                            this.timerComp3 = createApp(TimerVue);
+                            this.timerComp3 = createApp(TimerVue, {id: "2"});
                             const wrapper = document.createElement("div");
                             wrapper.setAttribute("id", localStorage.timer_count);
                             wrapper.setAttribute("class", "timer-container w-33-cent text-center");

@@ -25,6 +25,7 @@
 </template>
 
 <script>
+    import TimerDataService from "../services/TimerDataService";
     function timeToString(time) {
         let diffInHrs = time / 3600000;
         let hh = Math.floor(diffInHrs);
@@ -72,9 +73,12 @@
 
     export default {
         name: "Timer",
+        props: {
+            id: String
+        },
         data() {
             return {
-                timerID: "Timer-"+localStorage.timer_count,
+                timerID: this.id,
                 timer_time: "00:00:00:00",
                 state: "stopped",
                 startTime: 0,
@@ -90,7 +94,69 @@
                 console.log("State changed");
             }
         },
+        created: function() {
+            // add event listener to handle tab/browser closing
+            // and do logout
+            window.addEventListener(
+                "beforeunload",
+                this.save
+            );
+        },
+        mounted() {
+            console.log(this.timerID);
+            console.log(localStorage.getItem("saveData-" + this.timerID));
+            
+            this.load()
+        },
         methods: {
+            save(e) {
+                e.preventDefault();
+                
+                localStorage.setItem("saveData-" + this.timerID, JSON.stringify({
+                    state: this.state,
+                    savedTime: this.elapsedTime,
+                    record: this.result,
+                    timeClosed: Date.now(),
+                    counter: this.counter,
+                    prevLap: this.prevLap
+                }));
+            },
+            load() {
+                if(this.timerID) {
+                    console.log("Masuk ke load")
+                    const loadData = JSON.parse(localStorage.getItem("saveData-" + this.timerID));
+                    if(!loadData) return;
+
+                    this.elapsedTime = loadData.savedTime;
+                    
+                    switch(loadData.state) {
+                        case "started":
+                            console.log("Timer " + this.timerID + " masuk started");
+                            this.elapsedTime += (Date.now() - loadData.timeClosed);
+                            this.timer_time = timeToString(this.elapsedTime);
+                            this.result = loadData.record;
+                            this.counter=loadData.counter;
+                            this.prevLap=loadData.prevLap;
+                            this.state= loadData.state;
+                            this.start();
+                            break
+                        case "paused":
+                            console.log("Timer " + this.timerID + " masuk paused");
+                            this.timer_time = timeToString(this.elapsedTime);
+                            this.result = loadData.record;
+                            this.counter=loadData.counter;
+                            this.prevLap=loadData.prevLap;
+                            this.state= loadData.state;
+                            this.pause();
+                            break
+                        case "stopped":
+                            console.log("Timer " + this.timerID + " masuk stopped");
+                            this.timer_time = timeToString(this.elapsedTime);
+                            this.result = "Time <br/>";
+                            break
+                    }
+                }
+            },
             start() {
                 this.startTime = Date.now() - this.elapsedTime
                 if (this.state == "stopped") {
@@ -120,6 +186,25 @@
                 this.elapsedTime = 0;
 
                 this.state = "stopped";
+
+                console.log(this.timerID);
+
+                var data = {
+                    counter: this.counter,
+                    lap_string: this.result,
+                    prev_lap: this.prevLap,
+                    savedtime: null,
+                    closedtime: null,
+                    state: null
+                }
+
+                TimerDataService.update(this.timerID, data)
+                    .then(response => {
+                        console.log(response.data);
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
             },
             lap() {
                 const currTime = this.startTime - this.elapsedTime;
